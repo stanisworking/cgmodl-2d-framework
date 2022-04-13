@@ -8,6 +8,9 @@ public class MeshObject : MonoBehaviour
     [SerializeField]
     MeshType meshType;
 
+    [SerializeField]
+    bool startAtOrigin = false;
+
     Mesh mesh;
 
     // Start is called before the first frame update
@@ -15,7 +18,8 @@ public class MeshObject : MonoBehaviour
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        transform.position = new Vector3(0, 0, 0);
+        if(startAtOrigin)
+            transform.position = new Vector3(0, 0, 0);
 
         InitialiseMesh();
     }
